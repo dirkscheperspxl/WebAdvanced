@@ -1,6 +1,6 @@
-
-
-
+<?php
+setcookie('kleurcode',$_POST['color'], time()+60*60);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,12 +8,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body style="background-color: <?php $color = $_POST['color']; echo $color ?> "
-<?php
-$name = $_POST['name'];
-$color = $_POST['color'];
-echo "<h1>hello $name<h1>";
-?>
+<body>
+<form>
+De geselecteerde kleur is <?php echo $_COOKIE['kleurcode']?>
+<form action="toonMetCookie.php" method="post">
+    <input type="hidden" name="name" value="<?php print($_POST['name']) ?>">
+    <input type="hidden" name="color" value="<?php print($_POST['color']) ?>">
+    <input type="submit">
 
+</form>
 </body>
 </html>
